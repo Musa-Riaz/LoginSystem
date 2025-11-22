@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 import morgan from 'morgan';
 import { Server as SocketIOServer } from 'socket.io';
 import errorMiddleware from './app/middlewares/errorMiddleware';
+import authRoutes from './app/routes/auth.routes';
 
 dotenv.config();
 
@@ -58,11 +59,8 @@ app.use(async (req, res, next) => {
 });
 
 //routes
-app.use('/', (req, res) => {
-    res.send({
-        message: "connected"
-    })
-})
+
+app.use('/api/v1/auth', authRoutes);
 
 //error middlware at the end
 app.use(errorMiddleware);

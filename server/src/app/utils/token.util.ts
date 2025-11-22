@@ -40,3 +40,15 @@ export function extractToken(authHeader: string | undefined) : string | undefine
   }
   return authHeader.split(" ")[1] ;
 }
+
+
+// helper function to generate random token
+export function generateRandomToken(length: number){
+    return crypto.randomBytes(length).toString('hex');
+}
+
+
+//generate a password reset token
+export function generatePasswordResetToken(): string {
+    return generateRandomToken(32);
+}

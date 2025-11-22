@@ -1,4 +1,32 @@
 {
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.19.1",
+    "morgan": "^1.10.1",
+    "nodemailer": "^7.0.10",
+    "nodemon": "^3.1.10",
+    "socket.io": "^4.8.1",
+    "winston": "^3.18.3",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^24.8.1",
+    "eslint": "^9.37.0",
+    "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.9.3"
+  },
   "name": "server",
   "version": "1.0.0",
   "description": "",
@@ -7,39 +35,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "start": "node dist/server.js",
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-    "dev:nodemon": "nodemon --watch src --ext ts,js --exec \"npx ts-node --project tsconfig.json src/index.ts\""
+    "dev": "ts-node-dev --respawn --transpile-only --require tsconfig-paths/register src/index.ts",
+    "dev:nodemon": "nodemon --watch src --ext ts,js --exec \"npx ts-node --project tsconfig.json src/index.ts\"",
+    "seed:users": "ts-node src/seed/users.seed.ts",
+    "seed:projects": "ts-node src/seed/projects.seed.ts",
+    "seed:tasks": "ts-node src/seed/tasks.seed.ts",
+    "seed": "ts-node src/seed/users.seed.ts && ts-node src/seed/projects.seed.ts && ts-node src/seed/tasks.seed.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
-  "devDependencies": {
-    "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.5",
-    "@types/jsonwebtoken": "^9.0.10",
-    "@types/morgan": "^1.9.10",
-    "@types/node": "^24.10.1",
-    "ts-node": "^10.9.2",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^5.9.3"
-  },
-  "dependencies": {
-    "@types/mongoose": "^5.11.96",
-    "bcrypt": "^6.0.0",
-    "bcryptjs": "^3.0.3",
-    "cors": "^2.8.5",
-    "crypto": "^1.0.1",
-    "dotenv": "^17.2.3",
-    "express": "^5.1.0",
-    "express-async-handler": "^1.2.0",
-    "http": "^0.0.1-security",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.20.0",
-    "morgan": "^1.10.1",
-    "nodemailer": "^7.0.10",
-    "nodemon": "^3.1.11",
-    "socket.io": "^4.8.1",
-    "zod": "^4.1.12"
-  }
+  "type": "commonjs"
 }
